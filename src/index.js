@@ -7,12 +7,14 @@
     var scale = 0;
     var tid;
     var flexible = lib.flexible || (lib.flexible = {});
-    var $dom = document.createElement('div');
-    $dom.style = 'font-size:16px;';
-    document.body.appendChild($dom);
-    var scaledFontSize = parseInt(window.getComputedStyle($dom, null).getPropertyValue('font-size'));
-    document.body.removeChild($dom);
-    var scaleFactor = 16 / scaledFontSize;
+    // var $dom = document.createElement('div');
+  var oFontSize = docEl.style.fontSize
+    docEl.style.fontSize = '120px';
+    // document.body.appendChild($dom);
+    var scaledFontSize = parseInt(window.getComputedStyle(docEl, null).getPropertyValue('font-size'));
+    // document.body.removeChild($dom);
+    var scaleFactor = 120 / scaledFontSize;
+  docEl.style = oFontSize||'';
 
     if (metaEl) {
         console.warn('将根据已有的meta标签来设置缩放比例');

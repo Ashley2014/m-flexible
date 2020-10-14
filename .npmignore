@@ -1,0 +1,10 @@
+.DS_Store
+.gitignore
+.npmignore
+.editorconfig
+.idea
+.git
+.temp
+/spec
+/test
+/node_modules

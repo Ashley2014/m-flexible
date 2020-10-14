@@ -1,0 +1,23 @@
+{
+  "name": "m-flexible",
+  "version": "0.1.0",
+  "description": "query-string-umd",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "uglifyjs src/index.js  --compress -o dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ashley2014/m-flexible.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ashley2014/m-flexible/issues"
+  },
+  "homepage": "https://github.com/Ashley2014/m-flexible#readme",
+  "devDependencies": {
+    "uglify-js": "^3.11.2"
+  },
+  "dependencies": {}
+}

@@ -1,4 +1,22 @@
 ;(function (win, lib) {
+  // flexible.css
+  var cssText = "" +
+    "@charset \"utf-8\";html *{-webkit-text-size-adjust:none;}";
+  // cssText end
+
+  var styleEl = document.createElement("style");
+  document.getElementsByTagName("head")[0].appendChild(styleEl);
+  if (styleEl.styleSheet) {
+    if (!styleEl.styleSheet.disabled) {
+      styleEl.styleSheet.cssText = cssText;
+    }
+  } else {
+    try {
+      styleEl.innerHTML = cssText
+    } catch(e) {
+      styleEl.innerText = cssText;
+    }
+  }
   var doc = win.document;
   var docEl = doc.documentElement;
   var metaEl = doc.querySelector('meta[name="viewport"]');
@@ -8,13 +26,15 @@
   var tid;
   var flexible = lib.flexible || (lib.flexible = {});
   var oFontSize = docEl.style.fontSize;
+
   docEl.style.fontSize = '120px';
   var scaleFactor = 1;
   if (window.getComputedStyle) {
     var scaledFontSize = parseInt(window.getComputedStyle(docEl, null).getPropertyValue('font-size'));
     scaleFactor = 120 / scaledFontSize;
+    // alert(scaleFactor)
   }
-  docEl.style = oFontSize || '';
+  docEl.style.fontSize = oFontSize || '';
   if (metaEl) {
     console.warn('将根据已有的meta标签来设置缩放比例');
     var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
@@ -87,6 +107,7 @@
     tid = setTimeout(refreshRem, 300);
   }, false);
   win.addEventListener('pageshow', function (e) {
+
     if (e.persisted) {
       clearTimeout(tid);
       tid = setTimeout(refreshRem, 300);
